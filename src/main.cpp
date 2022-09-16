@@ -115,9 +115,8 @@ int main(int argc, char* argv[]) {
     // Criando arquivo para gravar o resultado, provavelmente será formatado quando o código estiver pronto.
     auto gravarResultado = (double)duration_cast<nanoseconds>(elapsed).count();
     fstream arquivo;
-    arquivo.open("../data/dados.txt");
-    cout << arquivo.is_open() << endl;
-    arquivo << gravarResultado;
+    arquivo.open("../data/dados.txt", ios::app);
+    arquivo << gravarResultado << '\n';
     arquivo.close();
 
     /* Multiplicou certinho!!!*/
