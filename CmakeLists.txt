@@ -1,9 +1,4 @@
 cmake_minimum_required(VERSION 3.2)
+project(Threads-Processos)
 
-add_executable(threads_processos
-               src/main.cpp
-              )
-              
-target_include_directories(threads_processos PUBLIC
-                           include
-                           )
+add_executable(threads_processos src/main.cpp)
