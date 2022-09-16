@@ -3,8 +3,9 @@ project(Threads-Processos)
 
 add_executable(threads_processos 
                 src/main.cpp
+                src/Multiplicacao.cpp
                 )
 
-target_include_directories(threads_processos PUBLIC
+target_include_directories(threads_processos  PUBLIC
                            include
                            )

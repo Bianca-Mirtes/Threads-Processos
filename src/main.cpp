@@ -1,11 +1,9 @@
 #include <time.h>
 
-#include <algorithm>
+#include <Multiplicacao.hpp>
 #include <chrono>
 #include <cstdlib>
 #include <fstream>
-#include <iostream>
-#include <vector>
 
 /* Dúvida (oq é melhor? Tem o mesmo efeito?):
     - semente pro srand() vir no argv[]
@@ -71,25 +69,20 @@ int main(int argc, char* argv[]) {
     }
 
     /*Pelo video de Julio a multiplicação é dot, aquele dermantelo! kkkkkkkkk */
-    vector<vector<int>> resultado_dot;
-    int elem = 0;
-    // Medindo tempo de processamento com a lib std::chrono.
-    auto start = steady_clock::now();
-    for (int ii = 0; ii < matriz1.size(); ii++) {
-        vector<int> resultado_dot_linha;
-        int count = 0;
-        while (count < matriz2.size()) {
-            for (int jj = 0; jj < matriz2[0].size(); jj++) {
-                elem += matriz1[ii][jj] * matriz2[jj][count];
-            }
-            resultado_dot_linha.push_back(elem);
-            elem = 0;
-            count++;
-        }
-        resultado_dot.push_back(resultado_dot_linha);
-    }
-    // Finalizando tempo de processamento com a lib std::chrono.
-    auto end = steady_clock::now();
+
+    // Instanciando a classe com a multiplicação das matrizes.
+    Multiplicacao operacoes;
+    vector<vector<int>> resultado_dot = operacoes.multSequencial(matriz1, matriz2);
+
+    // Pegando o tempo de processamento da operação aí em cima.
+    double tempoSequencial = operacoes.getTempoSequencial();
+    cout << "TEMPO: " << tempoSequencial << endl;
+
+    // Criando arquivo para gravar o resultado, provavelmente será formatado quando o código estiver pronto.
+    fstream arquivo;
+    arquivo.open("../data/dados.txt", ios::app);
+    arquivo << tempoSequencial << '\n';
+    arquivo.close();
 
     /*Vendo se multiplicou certo*/
     cout << endl;
@@ -103,21 +96,23 @@ int main(int argc, char* argv[]) {
         }
     }
 
-    // Muitos prints para descobrir como o resultado e os variáveis resultados a depender da syntax.
-    auto elapsed = end - start;
-    cout << "TEMPO DE PROCESSAMENTO EM MICROSEGUNDOS --> ";
-    cout << duration_cast<microseconds>(elapsed).count() << "ns" << endl;
-    cout << "PONTO FLUTUANTE --> " << duration<double>(elapsed).count() << "ns" << endl;
-    cout << "\nTEMPO DE PROCESSAMENTO EM NANOSEGUNDOS --> ";
-    cout << duration_cast<nanoseconds>(elapsed).count() << "ns" << endl;
-    cout << "PONTO FLUTUANTE --> " << duration<double>(elapsed).count() << "ns" << endl;
+    /*
+     * Comandos que eu estava usando no início, sem as classes.
+     */
+
+    // cout << "TEMPO DE PROCESSAMENTO EM MICROSEGUNDOS --> ";
+    // cout << duration_cast<microseconds>(elapsed).count() << "ns" << endl;
+    // cout << "PONTO FLUTUANTE --> " << duration<double>(elapsed).count() << "ns" << endl;
+    // cout << "\nTEMPO DE PROCESSAMENTO EM NANOSEGUNDOS --> ";
+    // cout << duration_cast<nanoseconds>(elapsed).count() << "ns" << endl;
+    // cout << "PONTO FLUTUANTE --> " << duration<double>(elapsed).count() << "ns" << endl;
 
     // Criando arquivo para gravar o resultado, provavelmente será formatado quando o código estiver pronto.
-    auto gravarResultado = (double)duration_cast<nanoseconds>(elapsed).count();
-    fstream arquivo;
-    arquivo.open("../data/dados.txt", ios::app);
-    arquivo << gravarResultado << '\n';
-    arquivo.close();
+    // auto gravarResultado = (double)duration_cast<nanoseconds>(elapsed).count();
+    // fstream arquivo;
+    // arquivo.open("../data/dados.txt", ios::app);
+    // // arquivo << gravarResultado << '\n';
+    // arquivo.close();
 
     /* Multiplicou certinho!!!*/
     /* São 3 loops aninhados, quero nem imaginar o custo computacional disso aí. Não sei se dá pra otimizar.*/
