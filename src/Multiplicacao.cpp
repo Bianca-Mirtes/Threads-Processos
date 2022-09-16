@@ -29,7 +29,7 @@ vector<vector<int>> Multiplicacao::multSequencial(vector<vector<int>> &matriz1, 
     auto elapsed = end - start;
 
     // Atribuindo o tempo de processamento em double para variável da classe
-    TempoSequencial = (double)duration_cast<nanoseconds>(elapsed).count();
+    TempoSequencial = (double)duration_cast<milliseconds>(elapsed).count();
     return resultado_dot;
 }
 

@@ -24,49 +24,49 @@ int main(int argc, char* argv[]) {
     srand(time(0));
 
     /* Matriz 1 */
-    // int linha_m1 = atoi(argv[1]), coluna_m1 = atoi(argv[2]);
+    int linha_m1 = atoi(argv[1]), coluna_m1 = atoi(argv[2]);
     vector<vector<int>> matriz1;
-    int linha = 3, coluna = 3;
-    for (int bb = 0; bb < linha; bb++) {
+    // int linha_m1 = 100, coluna_m1 = 100;
+    for (int bb = 0; bb < linha_m1; bb++) {
         vector<int> auxiliar1;
-        for (int dd = 0; dd < coluna; dd++) {
+        for (int dd = 0; dd < coluna_m1; dd++) {
             auxiliar1.push_back(rand() % 30);
         }
         matriz1.push_back(auxiliar1);
     }
 
     /* Matriz 2 */
-    // int linha_m2 = atoi(argv[3]), coluna_m2 = atoi(argv[4]);
+    int linha_m2 = atoi(argv[3]), coluna_m2 = atoi(argv[4]);
     vector<vector<int>> matriz2;
 
-    for (int bb = 0; bb < linha; bb++) {
+    for (int bb = 0; bb < linha_m2; bb++) {
         vector<int> auxiliar2;
-        for (int dd = 0; dd < coluna; dd++) {
+        for (int dd = 0; dd < coluna_m2; dd++) {
             auxiliar2.push_back(rand() % 50);
         }
         matriz2.push_back(auxiliar2);
     }
 
     /* Vendo se preencheu a matriz direitinho*/
-    for (vector<int> gg : matriz1) {
-        for (int ii = 0; ii < gg.size(); ii++) {
-            if (ii == gg.size() - 1) {
-                cout << gg[ii] << endl;
-            } else {
-                cout << gg[ii] << " ";
-            }
-        }
-    }
-    cout << endl;
-    for (vector<int> gg : matriz2) {
-        for (int ii = 0; ii < gg.size(); ii++) {
-            if (ii == gg.size() - 1) {
-                cout << gg[ii] << endl;
-            } else {
-                cout << gg[ii] << " ";
-            }
-        }
-    }
+    // for (vector<int> gg : matriz1) {
+    //     for (int ii = 0; ii < gg.size(); ii++) {
+    //         if (ii == gg.size() - 1) {
+    //             cout << gg[ii] << endl;
+    //         } else {
+    //             cout << gg[ii] << " ";
+    //         }
+    //     }
+    // }
+    // cout << endl;
+    // for (vector<int> gg : matriz2) {
+    //     for (int ii = 0; ii < gg.size(); ii++) {
+    //         if (ii == gg.size() - 1) {
+    //             cout << gg[ii] << endl;
+    //         } else {
+    //             cout << gg[ii] << " ";
+    //         }
+    //     }
+    // }
 
     /*Pelo video de Julio a multiplicação é dot, aquele dermantelo! kkkkkkkkk */
 
@@ -85,16 +85,16 @@ int main(int argc, char* argv[]) {
     arquivo.close();
 
     /*Vendo se multiplicou certo*/
-    cout << endl;
-    for (vector<int> gg : resultado_dot) {
-        for (int ii = 0; ii < gg.size(); ii++) {
-            if (ii == gg.size() - 1) {
-                cout << gg[ii] << endl;
-            } else {
-                cout << gg[ii] << " ";
-            }
-        }
-    }
+    // cout << endl;
+    // for (vector<int> gg : resultado_dot) {
+    //     for (int ii = 0; ii < gg.size(); ii++) {
+    //         if (ii == gg.size() - 1) {
+    //             cout << gg[ii] << endl;
+    //         } else {
+    //             cout << gg[ii] << " ";
+    //         }
+    //     }
+    // }
 
     /*
      * Comandos que eu estava usando no início, sem as classes.
