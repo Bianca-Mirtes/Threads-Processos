@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.2)
 project(Threads-Processos)
 
 add_executable(threads_processos 
-                src/main.cpp
+                src/Sequencial.cpp
                 src/Multiplicacao.cpp
                 )
 

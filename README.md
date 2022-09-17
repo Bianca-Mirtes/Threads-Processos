@@ -6,7 +6,7 @@ g++ gerarMatriz.cpp -o gerarMatriz -Wall
 ```
 Rodar: _números podem variar dependendo do tamanho da matriz_
 ```
-gerarMatriz 10 10 10 10
+./gerarMatriz 100 100 100 100
 ```
 <br>
 
