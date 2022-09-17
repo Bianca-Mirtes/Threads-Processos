@@ -80,8 +80,8 @@ int main(int argc, char* argv[]) {
 
     // Criando arquivo para gravar o resultado, provavelmente será formatado quando o código estiver pronto.
     fstream arquivo;
-    arquivo.open("../data/dados.txt", ios::app);
-    arquivo << tempoSequencial << '\n';
+    arquivo.open("../data/dadosProcessamento.txt", ios::app);
+    arquivo << tempoSequencial << "ms" << '\n';
     arquivo.close();
 
     /*Vendo se multiplicou certo*/
