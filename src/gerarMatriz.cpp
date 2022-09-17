@@ -11,7 +11,7 @@ int main(int argc, char* argv[]) {
 
     int linha_m1 = atoi(argv[1]), coluna_m1 = atoi(argv[2]);
     vector<vector<int>> matriz1;
-    // int linha_m1 = 100, coluna_m1 = 100;
+    arquivoMatriz1 << argv[1] << ' ' << argv[2] << '\n';
     for (int bb = 0; bb < linha_m1; bb++) {
         vector<int> auxiliar1;
         for (int dd = 0; dd < coluna_m1; dd++) {
@@ -39,6 +39,7 @@ int main(int argc, char* argv[]) {
     int linha_m2 = atoi(argv[3]), coluna_m2 = atoi(argv[4]);
     vector<vector<int>> matriz2;
 
+    arquivoMatriz2 << argv[3] << ' ' << argv[4] << '\n';
     for (int bb = 0; bb < linha_m2; bb++) {
         vector<int> auxiliar2;
         for (int dd = 0; dd < coluna_m2; dd++) {
