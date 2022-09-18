@@ -158,7 +158,7 @@ int main(int argc, char* argv[]) {
     }
     dados_escrita.close();
 
-    cout << "\nPRINT DA MATRIZ RESULTANTE: " << endl;
+    //cout << "\nPRINT DA MATRIZ RESULTANTE: " << endl;
     /*for (vector<int> gg : resultado_dot) {
         for (int ii = 0; ii < (int)gg.size(); ii++) {
             if (ii == (int)gg.size() - 1) {

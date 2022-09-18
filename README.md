@@ -14,7 +14,13 @@ Rodar: _números podem variar dependendo do tamanho da matriz_
 ```
 g++ Sequencial.cpp -o sequencial -Wall
 ```
-Rodar:
+
+Rodar manualmente cada teste:
 ```
 ./Sequencial "../data/matrizGerada1.txt" "../data/matrizGerada2.txt"
+```
+
+Rodar o programa x vezes automaticamente:
+```
+    ./script.rush.sh
 ```
