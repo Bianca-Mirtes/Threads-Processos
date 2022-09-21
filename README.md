@@ -22,5 +22,20 @@ Rodar manualmente cada teste:
 
 Rodar o programa x vezes automaticamente:
 ```
-    ./script.rush.sh
+./script.rush.sh
 ```
+<br>
+
+## Multithreads
+Compilar: 
+```
+g++ threads.cpp -o ./src -pthread -std=c++11
+```
+Executar:
+```
+./src "../data/matrizGerada1.txt" "../data/matrizGerada2.txt" 1250
+```
+<br>
+
+## Processos
+...
