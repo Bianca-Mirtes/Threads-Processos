@@ -6,18 +6,18 @@ g++ gerarMatriz.cpp -o gerarMatriz -Wall
 ```
 Rodar: _números podem variar dependendo do tamanho da matriz_
 ```
-./gerarMatriz 100 100 100 100
+./gerarMatriz 500 500 500 500
 ```
 <br>
 
-## Criar binário para sequencial:
+## Sequencial:
 ```
-g++ Sequencial.cpp -o sequencial -Wall
+g++ sequencial.cpp -o sequencial -Wall
 ```
 
 Rodar manualmente cada teste:
 ```
-./Sequencial "../data/matrizGerada1.txt" "../data/matrizGerada2.txt"
+./sequencial "../data/matrizGerada1.txt" "../data/matrizGerada2.txt"
 ```
 
 Rodar o programa x vezes automaticamente:
@@ -29,13 +29,22 @@ Rodar o programa x vezes automaticamente:
 ## Multithreads
 Compilar: 
 ```
-g++ threads.cpp -o ./src -pthread -std=c++11
+g++ threads.cpp -o ./threads -pthread -std=c++11
 ```
 Executar:
+_O último parâmetro inserido é (n1*m2) / 8_
 ```
-./src "../data/matrizGerada1.txt" "../data/matrizGerada2.txt" 1250
+./threads "../data/matrizGerada1.txt" "../data/matrizGerada2.txt" 31250
 ```
 <br>
 
 ## Processos
-...
+Compilar:
+```
+g++ processos.cpp -o processos
+```
+Executar:
+_O último parâmetro inserido é (n1*m2) / 8_
+```
+./processos "../data/matrizGerada1.txt" "../data/matrizGerada2.txt" 31250
+```
