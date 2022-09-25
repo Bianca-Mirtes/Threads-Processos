@@ -32,7 +32,7 @@ Compilar:
 g++ threads.cpp -o ./threads -pthread -std=c++11
 ```
 Executar:
-_O último parâmetro inserido é (n1*m2) / 8_
+_O último parâmetro inserido é (n1*m2) / 8_ o valor de 31250 é para matriz 500 500 500 500
 ```
 ./threads "../data/matrizGerada1.txt" "../data/matrizGerada2.txt" 31250
 ```
