@@ -118,11 +118,46 @@ int main(int argc, char *argv[]) {
 
     auto elapsed = end - start;
     auto milisegundos = (double)duration_cast<milliseconds>(elapsed).count();
-    // Salvando o tempo de processamento
-    ofstream arqProcessos;
-    arqProcessos.open("../data/dadosProcessos.txt");
-    arqProcessos << milisegundos << " ";
-    arqProcessos.close();
+
+    /*Abre o arquivo para leitura a fim de que os dados armazenados não ultrapassem 10 amostras*/
+    fstream dados_leitura;
+    dados_leitura.open("../data/dadosProcessos.txt", ios::in);
+
+    /*Abre o arquivo para escrita a fim de armazenar o tempo de processamento da execução atual*/
+    ofstream dados_escrita;
+    dados_escrita.open("../data/dadosProcessos.txt", ios::app);
+
+    string linhas;
+    int qnt_espacos=0;
+    vector<int> qnt_limite;
+    
+    while(!dados_leitura.eof()){
+        getline(dados_leitura, linhas);
+        if(linhas.size() == 0 || linhas.size() == 1){
+            dados_escrita << m1_linha << "x" << m2_coluna << " " << milisegundos << " ";
+        }
+        if(linhas.size() > 1){
+            for(int jj=0; jj < linhas.size(); jj++){
+                if(isspace(linhas[jj])){
+                    qnt_espacos++;
+                }
+            }
+            qnt_limite.push_back(qnt_espacos);
+            if(qnt_espacos >= 2 && qnt_espacos < 10){
+                dados_escrita << milisegundos << " ";
+            }
+        }
+        qnt_limite.push_back(qnt_espacos);
+        qnt_espacos=0;
+    }
+    dados_leitura.close();
+
+    if(!qnt_limite.empty()){
+        if(qnt_limite[qnt_limite.size()-1] == 10){
+            dados_escrita << milisegundos << endl;  
+        }
+    }
+    dados_escrita.close();
 
     return 0;
 }
