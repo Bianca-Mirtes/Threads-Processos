@@ -22,7 +22,7 @@ Rodar manualmente cada teste:
 
 Rodar o programa x vezes automaticamente:
 ```
-./script.rush.sh
+./run.sh
 ```
 <br>
 
