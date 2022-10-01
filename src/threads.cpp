@@ -26,6 +26,7 @@ void multiplicacao(int id_thread, int qnt_elementos, vector<vector<int>> &matriz
     if (!arquivoMatriz3.is_open()) {
         arquivoMatriz3.open(arq);
     }
+    arquivoMatriz3 << matriz2.size() << " " << matriz2[0].size() << endl;
     for (int ii = inicio; ii <= (id_thread == 0) ? fim : fim - 1; ii++) {
         int count = ((id_thread + 1) % 2 == 0 && ii == inicio && qnt_elementos % matriz1.size() != 0) ? matriz1.size() / 2 : 0;
         while (count < matriz2.size()) {
@@ -99,8 +100,9 @@ int main(int argc, char *argv[]) {
     matriz2.close();
 
     int NUM_THREADS = (m1_linha * m2_coluna / atoi(argv[3]));
-
+    
     thread threads[NUM_THREADS];
+
     steady_clock::time_point start = steady_clock::now();
     for (int ii = 0; ii < NUM_THREADS; ii++) {
         threads[ii] = thread(multiplicacao, ii, atoi(argv[3]), ref(Matriz1), ref(Matriz2));
@@ -110,17 +112,21 @@ int main(int argc, char *argv[]) {
         threads[jj].join();
     }
     steady_clock::time_point end = steady_clock::now();
+    
     auto elapsed = end - start;
     auto milisegundos = (double)duration_cast<milliseconds>(elapsed).count();
-
-    // /*Abre o arquivo para leitura a fim de que os dados armazenados não ultrapassem 10 amostras*/
-    // fstream dados_leitura;
-    // dados_leitura.open("../data/dadosThreads.txt", ios::in);
 
     /*Abre o arquivo para escrita a fim de armazenar o tempo de processamento da execução atual*/
     ofstream dados_escrita;
     dados_escrita.open("../data/dadosThreads.txt", ios::app);
     dados_escrita << milisegundos << "  ";
+
+    dados_escrita.close();
+
+
+    // /*Abre o arquivo para leitura a fim de que os dados armazenados não ultrapassem 10 amostras*/
+    // fstream dados_leitura;
+    // dados_leitura.open("../data/dadosThreads.txt", ios::in);
     
     // string linhas;
     // int qnt_espacos=0;

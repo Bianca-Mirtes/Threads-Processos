@@ -28,6 +28,7 @@ void multiplicacao(int id_proc, int qnt_elementos, vector<vector<int>> &matriz1,
     if (!dadosProcesso.is_open()) {
         dadosProcesso.open(arq);
     }
+    dadosProcesso << matriz2.size() << " " << matriz2[0].size() << endl;
     for (int ii = inicio; ii <= (id_proc == 0) ? fim : fim - 1; ii++) {
         int count = ((id_proc + 1) % 2 == 0 && ii == inicio && qnt_elementos % matriz1.size() != 0) ? matriz1.size() / 2 : 0;
         while (count < matriz2.size()) {
@@ -127,6 +128,8 @@ int main(int argc, char *argv[]) {
     ofstream dados_escrita;
     dados_escrita.open("../data/dadosProcessos.txt", ios::app);
     dados_escrita << milisegundos << "  ";
+
+    dados_escrita.close();
 
     // string linhas;
     // int qnt_espacos=0;
