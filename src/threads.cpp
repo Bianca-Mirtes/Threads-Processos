@@ -123,42 +123,5 @@ int main(int argc, char *argv[]) {
 
     dados_escrita.close();
 
-
-    // /*Abre o arquivo para leitura a fim de que os dados armazenados não ultrapassem 10 amostras*/
-    // fstream dados_leitura;
-    // dados_leitura.open("../data/dadosThreads.txt", ios::in);
-    
-    // string linhas;
-    // int qnt_espacos=0;
-    // vector<int> qnt_limite;
-    
-    // while(!dados_leitura.eof()){
-    //     getline(dados_leitura, linhas);
-    //     if(linhas.size() == 0 || linhas.size() == 1){
-    //         dados_escrita << m1_linha << "x" << m2_coluna << " " << milisegundos << " ";
-    //     }
-    //     if(linhas.size() > 1){
-    //         for(int jj=0; jj < linhas.size(); jj++){
-    //             if(isspace(linhas[jj])){
-    //                 qnt_espacos++;
-    //             }
-    //         }
-    //         qnt_limite.push_back(qnt_espacos);
-    //         if(qnt_espacos >= 2 && qnt_espacos < 10){
-    //             dados_escrita << milisegundos << " ";
-    //         }
-    //     }
-    //     qnt_limite.push_back(qnt_espacos);
-    //     qnt_espacos=0;
-    // }
-    // dados_leitura.close();
-
-    // if(!qnt_limite.empty()){
-    //     if(qnt_limite[qnt_limite.size()-1] == 10){
-    //         dados_escrita << milisegundos << endl;  
-    //     }
-    // }
-    // dados_escrita.close();
-
     return 0;
 }
